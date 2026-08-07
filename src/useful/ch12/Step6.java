@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.chrono.ChronoPeriod;
+import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
@@ -28,7 +29,7 @@ public class Step6 {
 
         DateTimeFormatter fomat = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 a hh시 mm분");
         System.out.println(today.format(fomat));
-
+        System.out.println(today.format(fomat));
 
     }
 }
