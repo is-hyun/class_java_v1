@@ -28,7 +28,7 @@ public class MyFrame extends JFrame {
         ImageIcon playerIcon = new ImageIcon("images/playerL.png");
         player = new JLabel(playerIcon);
         player.setSize(100,100);
-        player.setLocation(450,510);
+        player.setLocation(450,500);
     }
 
     private void setInitLayout() {
