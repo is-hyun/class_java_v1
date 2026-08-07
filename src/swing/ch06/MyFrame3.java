@@ -8,7 +8,7 @@ public class MyFrame2 extends JFrame {
 
     private JLabel backgroundMap;
     private JLabel player;
-    private final int MOVE_PLAYER = 10;
+    private final int MOVE_PLAYER = 15;
 
     public MyFrame2() {
         initData();
