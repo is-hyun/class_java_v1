@@ -4,13 +4,17 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class MyFrame2 extends JFrame {
+public class MyFrame3 extends JFrame {
 
     private JLabel backgroundMap;
     private JLabel player;
-    private final int MOVE_PLAYER = 15;
+    private final int MOVE_PLAYER = 10;
 
-    public MyFrame2() {
+    // 플레이어 이미지 L / R
+    ImageIcon playerIconL = new ImageIcon("images/playerL.png");
+    ImageIcon playerIconR = new ImageIcon("images/playerR.png");
+
+    public MyFrame3() {
         initData();
         setInitLayout();
         addEventListener();
@@ -28,10 +32,10 @@ public class MyFrame2 extends JFrame {
         backgroundMap.setLocation(0, 0);
 
         // 플레이어 이미지 초기화
-        ImageIcon playerIcon = new ImageIcon("images/playerL.png");
-        player = new JLabel(playerIcon);
-        player.setSize(100,100);
-        player.setLocation(450,500);
+        playerIconL = new ImageIcon("images/playerL.png");
+        player = new JLabel(playerIconL);
+        player.setSize(100, 100);
+        player.setLocation(450, 510); // 450 510
     }
 
     private void setInitLayout() {
@@ -46,31 +50,66 @@ public class MyFrame2 extends JFrame {
         this.addKeyListener(new KeyListener() {
             int X = player.getX();
             int Y = player.getY();
+
             @Override
             public void keyTyped(KeyEvent e) {
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    if (X > -10) {
-                        X -= MOVE_PLAYER;
-                    }
-                } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    if (Y > -20) {
-                        Y -= MOVE_PLAYER;
-                    }
-                } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    if (X < 900) {
-                        X += MOVE_PLAYER;
-                    }
-                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    if (Y < 510) {
-                        Y += MOVE_PLAYER;
-                    }
-                }
+                int X = player.getX();
+                int Y = player.getY();
 
+                // 제어문 - swith
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_LEFT:
+                        player.setIcon(playerIconL);
+                        if (X > 40) {
+                            X -= MOVE_PLAYER;
+                        }
+                        break;
+                    case KeyEvent.VK_UP:
+                        if (Y > 0) {
+                            if (Y > 470) {
+                                Y -= MOVE_PLAYER;
+                            } else if (Y > 350 && Y <= 390) {
+                                Y -= MOVE_PLAYER;
+                            } else if (Y > 230 && Y <= 270) {
+                                Y -= MOVE_PLAYER;
+                            } else if (Y <= 150) {
+                                Y -= MOVE_PLAYER;
+                            } else if ((X >= 100 && X <= 140) || (X >= 760 && X <= 800)) {
+                                Y -= MOVE_PLAYER;
+                            }
+                        }
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        player.setIcon(playerIconR);
+                        if (X < 870) {
+                            if (X > 470) {
+                                X += MOVE_PLAYER;;
+                            } else if (X > 350 && X <= 390) {
+                                X += MOVE_PLAYER;;
+                            } else if (X > 230 && X <= 270) {
+                                X += MOVE_PLAYER;;
+                            } else if (X <= 150) {
+                                X += MOVE_PLAYER;;
+                            } else if ((X >= 100 && X <= 140) || (X >= 760 && X <= 800)) {
+                                X += MOVE_PLAYER;;
+                            }
+                        }
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        if (Y < 510) {
+//                            if (Y < 390 || Y > 470)
+                            Y += MOVE_PLAYER;
+                        }
+                        break;
+                    default:
+                        return;
+                }
                 player.setLocation(X, Y);
+                System.out.println(player.getLocation());
             }
 
             @Override
@@ -81,7 +120,7 @@ public class MyFrame2 extends JFrame {
     }
 
     public static void main(String[] args) {
-        new MyFrame2();
+        new MyFrame3();
     }
 
 }
