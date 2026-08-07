@@ -29,7 +29,6 @@ public class Step6 {
 
         DateTimeFormatter fomat = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 a hh시 mm분");
         System.out.println(today.format(fomat));
-        System.out.println(today.format(fomat));
 
     }
 }
