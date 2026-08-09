@@ -65,7 +65,17 @@ public class MyFrame3 extends JFrame {
                     case KeyEvent.VK_LEFT:
                         player.setIcon(playerIconL);
                         if (X > 40) {
-                            X -= MOVE_PLAYER;
+                            if (Y <= 510 && Y >= 470) {
+                                X -= MOVE_PLAYER;
+                            } else if (Y <= 390 && Y >= 350) {
+                                X -= MOVE_PLAYER;
+                            } else if (Y <= 270 && Y >= 230) {
+                                X -= MOVE_PLAYER;
+                            } else if (Y <= 150 && Y >= 0) {
+                                X -= MOVE_PLAYER;
+                            } else if ((X > 100 && X <= 140) || (X > 760 && X <= 800)) {
+                                X -= MOVE_PLAYER;
+                            }
                         }
                         break;
                     case KeyEvent.VK_UP:
@@ -86,23 +96,32 @@ public class MyFrame3 extends JFrame {
                     case KeyEvent.VK_RIGHT:
                         player.setIcon(playerIconR);
                         if (X < 870) {
-                            if (X > 470) {
-                                X += MOVE_PLAYER;;
-                            } else if (X > 350 && X <= 390) {
-                                X += MOVE_PLAYER;;
-                            } else if (X > 230 && X <= 270) {
-                                X += MOVE_PLAYER;;
-                            } else if (X <= 150) {
-                                X += MOVE_PLAYER;;
-                            } else if ((X >= 100 && X <= 140) || (X >= 760 && X <= 800)) {
-                                X += MOVE_PLAYER;;
+                            if (Y <= 510 && Y >= 470) {
+                                X += MOVE_PLAYER;
+                            } else if (Y <= 390 && Y >= 350) {
+                                X += MOVE_PLAYER;
+                            } else if (Y <= 270 && Y >= 230) {
+                                X += MOVE_PLAYER;
+                            } else if (Y <= 150 && Y >= 0) {
+                                X += MOVE_PLAYER;
+                            } else if ((X >= 100 && X < 140) || (X >= 760 && X < 800)) {
+                                X += MOVE_PLAYER;
                             }
                         }
                         break;
                     case KeyEvent.VK_DOWN:
                         if (Y < 510) {
-//                            if (Y < 390 || Y > 470)
-                            Y += MOVE_PLAYER;
+                            if (Y >= 470) {
+                                Y += MOVE_PLAYER;
+                            } else if (Y >= 350 && Y < 390) {
+                                Y += MOVE_PLAYER;
+                            } else if (Y >= 230 && Y < 270) {
+                                Y += MOVE_PLAYER;
+                            } else if (Y < 150) {
+                                Y += MOVE_PLAYER;
+                            } else if ((X >= 100 && X <= 140) || (X >= 760 && X <= 800)) {
+                                Y += MOVE_PLAYER;
+                            }
                         }
                         break;
                     default:
