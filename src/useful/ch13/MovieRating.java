@@ -24,7 +24,7 @@ public class MovieRating {
         System.out.println("총 " + movies.size() + "편");
 
         // 기생충 영화 확인
-        System.out.println("기생충 존재 여부 확인 : " + movies.contains("기생충  - ****"));
+        System.out.println("기생충 존재 여부 확인 : " + movies.contains("기생충 - ****")); // true : 있음
 
     }
 }
