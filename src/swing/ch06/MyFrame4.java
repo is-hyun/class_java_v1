@@ -12,7 +12,7 @@ public class MyFrame4 extends JFrame {
 
     private JLabel enemy;
     private final int MOVE_ENEMY = 10;
-    private final int MOVE_TIME = 1;
+    private final int MOVE_TIME = 80;
 
     // 플레이어 이미지 L / R
     ImageIcon playerIconL = new ImageIcon("images/playerL.png");
@@ -26,6 +26,7 @@ public class MyFrame4 extends JFrame {
         initData();
         setInitLayout();
         addEventListener();
+        enemyMove();
     }
 
     private void initData() {
@@ -59,6 +60,48 @@ public class MyFrame4 extends JFrame {
         backgroundMap.add(player);
         backgroundMap.add(enemy);
         setVisible(true);
+    }
+
+    public void enemyMove() {
+        int X = enemy.getX();
+        int Y = enemy.getY();
+        boolean moveR = true;
+        boolean moveL = false;
+
+        while (true) {
+            while (moveR) {
+                enemy.setIcon(enemyIconR);
+                X += MOVE_ENEMY;
+                enemy.setLocation(X,Y);
+
+                try {
+                    Thread.sleep(MOVE_TIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (X == 870) {
+                    moveR = false;
+                    moveL = true;
+                }
+            }
+            while (moveL) {
+                enemy.setIcon(enemyIconL);
+                X -= MOVE_ENEMY;
+                enemy.setLocation(X,Y);
+
+                try {
+                    Thread.sleep(MOVE_TIME);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (X == 50) {
+                    moveL = false;
+                    moveR = true;
+                }
+            }
+        }
     }
 
     private void addEventListener() {
@@ -143,7 +186,7 @@ public class MyFrame4 extends JFrame {
                         return;
                 }
                 player.setLocation(X, Y);
-                System.out.println(player.getLocation());
+                // System.out.println(player.getLocation()); 좌표 확인용
             }
 
             @Override
