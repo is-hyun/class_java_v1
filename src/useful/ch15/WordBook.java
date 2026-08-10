@@ -49,7 +49,6 @@ public class WordBook {
             } else {
                 System.out.println("번호를 잘못 입력했습니다");
             }
-
         }
 
     }
