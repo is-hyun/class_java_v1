@@ -19,7 +19,6 @@ public class MovieRating {
         }
 
         System.out.println("\n총 " + movies.size() + "편");
-
         System.out.println("-------------------------");
         movies.remove(2);
         System.out.println("총 " + movies.size() + "편");

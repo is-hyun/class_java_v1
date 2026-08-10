@@ -31,7 +31,6 @@ public class MyStore {
 
         // 확인
         list1.isEmpty(); // 비어있는지 판단 -> T/F
-
         System.out.println("-------------------------");
 
 
