@@ -6,7 +6,7 @@ public class Demo4 {
         // 단계적으로 줄여쓰기
 
         // 1. 매개변수 타입 생략 가능
-        MathOperation add = (int x, int y) -> {return x + y;};
+        MathOperation add = (x, y) -> {return x + y;};
 
         // 2. 중괄호와 리턴 타입 생략
         MathOperation sub = (int x, int y) -> x - y;
