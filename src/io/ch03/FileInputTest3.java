@@ -1,36 +1,33 @@
 package io.ch03;
 
 import java.io.FileInputStream;
-import java.util.List;
+import java.io.FileNotFoundException;
 
-public class FileInputTest2 {
+public class FileInputTest3 {
     public static void main(String[] args) {
 
-        // 파일을 열면 반드시 닫아주는 것이 좋다
-        // 하지만 반복적 코드가 매번 발생하는 불편함 존재
-        //  >>> 새로운 문법 try-with-resources
+        // in.read(byte[] b)를 사용해서 코드를 완성하세요
+        // 데이터를 담을 byte 배열 선언
+        // 크기 10 = 한 번에 최대 10바이트까지 읽어오기
+        byte[] buffer = new byte[10];
 
-//        try {
-//
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        } finally {
-//
-//        }
+        // read(byte[])는 읽은 바이트 수(int)를 반환
+        // read()가 바이트 값 자체를 반환하는 것과는 다름
+        int readCount;
 
-//        try(스트림을 생성 ... 자동으로 close() 호출 됨) {
-//
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
+        try (FileInputStream in = new FileInputStream("assets/a.txt")) {
 
-        try(FileInputStream in = new FileInputStream("assets/a.txt")) {
-
-            int readData;
-            while ((readData = in.read()) != -1) {
-                System.out.print((char) readData);
+            while ((readCount = in.read(buffer)) != -1) {
+                // for (int i = 0; i < buffer.length; i++) {
+                    // >> buffer 배열의 크기는 항상 10으로 고정되어 있어서
+                    // >> 읽은 바이트 수가 10보다 작은 경우에 임의로 추가 문자를 붙여서 출력하는 문제가 생김
+                for (int i = 0; i < readCount; i++) { // 읽은 개수만큼만 출력
+                    System.out.print((char) buffer[i]);
+                }
             }
 
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
