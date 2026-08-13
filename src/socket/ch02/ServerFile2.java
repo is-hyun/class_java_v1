@@ -3,12 +3,16 @@ package socket.ch02;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class ServerFile2 {
     // 내 IP 주소 : 192.168.5.17
     public static void main(String[] args) {
 
-        try (ServerSocket serverSocket = new ServerSocket(5000)) {
+        try (ServerSocket serverSocket = new ServerSocket(5000);
+             FileWriter fw = new FileWriter("assets/client_message.txt", true);) {
 
             System.out.println("서버 측 프로그램 시작 - 포트 번호 : 5000 에서 대기 중...");
             // 클라이언트가 내 IP 주소와 포트번호를 사용해서 연결할 때까지 이 줄에서 대기(블로킹)
@@ -21,7 +25,13 @@ public class ServerFile2 {
 
             // 클라이언트가 보낸 데이터 한 줄 읽기
             String message = readerClient.readLine();
+            LocalTime time = LocalTime.now();
             System.out.println("클라이언트가 보낸 메시지 : " + message);
+
+
+            // 클라이언트의 데이터 파일에 저장하기
+            DateTimeFormatter fm = DateTimeFormatter.ofPattern("a hh시 mm분");
+            fw.write(message + " - " + time.format(fm) + "\n");
 
             // 서버 -> 클라이언트 응답 메시지
             writerToCilent.println("안녕 나는 서버야");
