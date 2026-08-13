@@ -12,7 +12,7 @@ public class ServerFile2 {
     public static void main(String[] args) {
 
         try (ServerSocket serverSocket = new ServerSocket(5000);
-             FileWriter fw = new FileWriter("assets/client_message.txt", true);) {
+             FileWriter fw = new FileWriter("assets/client_message.txt", true)) {
 
             System.out.println("서버 측 프로그램 시작 - 포트 번호 : 5000 에서 대기 중...");
             // 클라이언트가 내 IP 주소와 포트번호를 사용해서 연결할 때까지 이 줄에서 대기(블로킹)
