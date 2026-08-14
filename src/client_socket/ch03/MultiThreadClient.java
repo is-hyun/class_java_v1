@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
 public class MultiThreadClient {
     public static void main(String[] args) {
 
-        try (Socket socket = new Socket("192.168.5.17", 5001)) {
+        try (Socket socket = new Socket("127.0.0.1", 5001)) {
             System.out.println("=============== 서버 연결 완료 ===============");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
