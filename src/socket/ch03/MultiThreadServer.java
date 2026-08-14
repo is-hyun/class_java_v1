@@ -31,9 +31,9 @@ public class MultiThreadServer {
                         // 프로토콜 2
                         if ("🎉".equalsIgnoreCase(clientMessage)) {
                             System.out.println("  🎉상대방이 축하 메시지를 보냈습니다🎉");
-                            break;
+                        } else {
+                            System.out.println("[클라이언트 메시지] : " + clientMessage);
                         }
-                        System.out.println("[클라이언트 메시지] : " + clientMessage);
                     }
                 } catch (IOException e) {
                     // throw new RuntimeException();
@@ -57,7 +57,6 @@ public class MultiThreadServer {
                             }
                             if ("🎉".equalsIgnoreCase(serverMessage)) {
                                 System.out.println("상대방에게 축하 메시지를 전송했습니다");
-                                break;
                             }
                         }
 
