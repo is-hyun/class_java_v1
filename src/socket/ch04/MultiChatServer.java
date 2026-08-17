@@ -35,6 +35,9 @@ public class MultiChatServer {
                 // >> 생성한 출력 스트림 자료구조에 저장
                 clientWriterList.add(out);
 
+                System.out.println("==== 클라이언트 접속 ====");
+                System.out.println("현재 접속자 : " + clientWriterList.size() + "명");
+
                 String message;
                 while ((message = in.readLine()) != null) {
                     System.out.println("[메시지] : " + message);
@@ -77,8 +80,8 @@ public class MultiChatServer {
                 // 클라이언트가 연결되면 새 객체를 생성
                 // 연결된 소켓 객체 주소값을 해당 클래스 필드에 할당
                 new ClientHandler(socket).start();
-                System.out.println("==== 클라이언트 접속 ====");
-                System.out.println("현재 접속자 : " + clientWriterList.size() + "명");
+//                System.out.println("==== 클라이언트 접속 ====");
+//                System.out.println("현재 접속자 : " + clientWriterList.size() + "명");
             }
 
         } catch (IOException e) {
