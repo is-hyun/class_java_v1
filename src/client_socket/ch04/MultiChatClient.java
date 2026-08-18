@@ -49,6 +49,7 @@ public class MultiChatClient {
                         writer.println(name + " : " + clientMessage);
                         if ("exit".equalsIgnoreCase(clientMessage)) {
                             System.out.println("클라이언트 종료");
+                            writer.println(name + "님이 퇴장했습니다");
                             break;
                         }
                     }
